@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Spa {
+	id               Int     @default(autoincrement()) @id
+	spaName          String
+	address           String
+	phoneNumber      String
+	businessHours    String
+	regularHoliday   String
+	adultPrice       Int　　
+	childPrice       Int
+	adultWeekendPrice Int
+  childWeekendPrice Int
+	hasFreeShampoo   Boolean
+	hasPaidShampoo   Boolean
+	hasTowel         Boolean
+	hasFreeHairdryer Boolean
+	hasPaidHairdryer Boolean
+	hasCreditCard    Boolean
+	hasOpenAirBath   Boolean
+	hasWaterBath     Boolean
+	hasSauna         Boolean
+	hasBubbleBath    Boolean
+	hasJetBathSpa    Boolean
+	hasShoulderHittingShower Boolean
+	hasSleepingBath  Boolean
+	hasCypressBath   Boolean
+	hasBedrockBath   Boolean
+	hasElectricBath  Boolean
+	hasFamilyBath    Boolean
+	customSpa        String?
+	hasRestaurant    Boolean
+	hasBreakPlace    Boolean
+	hasMassageMachine Boolean
+	hasVendingMachine Boolean
+	hasStore          Boolean
+	customFacilities String?
+	picture          String
+	goodCount        Int
+  lat　            Float
+  lng　            Float
+}
