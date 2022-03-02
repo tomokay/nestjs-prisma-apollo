@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mutation {
+  createSpa(adress: String!, adultPrice: Float!, adultWeekendPrice: Float!, businessHours: String!, childPrice: Float!, childWeekendPrice: Float!, customFacilities: String!, customSpa: String!, goodCount: Float!, hasBedrockBath: Boolean!, hasBreakPlace: Boolean!, hasBubbleBath: Boolean!, hasCreditCard: Boolean!, hasCypressBath: Boolean!, hasElectricBath: Boolean!, hasFamilyBath: Boolean!, hasFreeHairdryer: Boolean!, hasFreeShampoo: Boolean!, hasMassageMachine: Boolean!, hasOpenAirBath: Boolean!, hasPaidHairdryer: Boolean!, hasPaidShampoo: Boolean!, hasRestaurant: Boolean!, hasSauna: Boolean!, hasShoulderHittingShower: Boolean!, hasSleepingBath: Boolean!, hasStore: Boolean!, hasTowel: Boolean!, hasVendingMachine: Boolean!, hasWaterBath: Boolean!, hasWhirpool: Boolean!, lat: Float!, lng: Float!, phoneNumber: String!, picture: String!, regularHoliday: String!, spaName: String!): Spa!
+}
+
+type Query {
+  spa: [Spa!]!
+}
+
+type Spa {
+  address: String!
+  adultPrice: Float!
+  adultWeekendPrice: Float!
+  businessHours: String!
+  childPrice: Float!
+  childWeekendPrice: Float!
+  customFacilities: String!
+  customSpa: String!
+  goodCount: Float!
+  hasBedrockBath: Boolean!
+  hasBreakPlace: Boolean!
+  hasBubbleBath: Boolean!
+  hasCreditCard: Boolean!
+  hasCypressBath: Boolean!
+  hasElectricBath: Boolean!
+  hasFamilyBath: Boolean!
+  hasFreeHairdryer: Boolean!
+  hasFreeShampoo: Boolean!
+  hasJetBathSpa: Boolean!
+  hasMassageMachine: Boolean!
+  hasOpenAirBath: Boolean!
+  hasPaidHairdryer: Boolean!
+  hasPaidShampoo: Boolean!
+  hasRestaurant: Boolean!
+  hasSauna: Boolean!
+  hasShoulderHittingShower: Boolean!
+  hasSleepingBath: Boolean!
+  hasStore: Boolean!
+  hasTowel: Boolean!
+  hasVendingMachine: Boolean!
+  hasWaterBath: Boolean!
+  id: ID!
+  lat: Float!
+  lng: Float!
+  phoneNumber: String!
+  picture: String!
+  regularHoliday: String!
+  spaName: String!
+}
