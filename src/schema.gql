@@ -2,24 +2,16 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Mutation {
-  createSpa(adress: String!, adultPrice: Float!, adultWeekendPrice: Float!, businessHours: String!, childPrice: Float!, childWeekendPrice: Float!, customFacilities: String!, customSpa: String!, goodCount: Float!, hasBedrockBath: Boolean!, hasBreakPlace: Boolean!, hasBubbleBath: Boolean!, hasCreditCard: Boolean!, hasCypressBath: Boolean!, hasElectricBath: Boolean!, hasFamilyBath: Boolean!, hasFreeHairdryer: Boolean!, hasFreeShampoo: Boolean!, hasMassageMachine: Boolean!, hasOpenAirBath: Boolean!, hasPaidHairdryer: Boolean!, hasPaidShampoo: Boolean!, hasRestaurant: Boolean!, hasSauna: Boolean!, hasShoulderHittingShower: Boolean!, hasSleepingBath: Boolean!, hasStore: Boolean!, hasTowel: Boolean!, hasVendingMachine: Boolean!, hasWaterBath: Boolean!, hasWhirpool: Boolean!, lat: Float!, lng: Float!, phoneNumber: String!, picture: String!, regularHoliday: String!, spaName: String!): Spa!
-}
-
-type Query {
-  spa: [Spa!]!
-}
-
-type Spa {
+input AddSpaInput {
   address: String!
-  adultPrice: Float!
-  adultWeekendPrice: Float!
+  adultPrice: Int!
+  adultWeekendPrice: Int!
   businessHours: String!
-  childPrice: Float!
-  childWeekendPrice: Float!
-  customFacilities: String!
-  customSpa: String!
-  goodCount: Float!
+  childPrice: Int!
+  childWeekendPrice: Int!
+  customFacilities: String
+  customSpa: String
+  goodCount: Int!
   hasBedrockBath: Boolean!
   hasBreakPlace: Boolean!
   hasBubbleBath: Boolean!
@@ -43,10 +35,79 @@ type Spa {
   hasVendingMachine: Boolean!
   hasWaterBath: Boolean!
   id: ID!
-  lat: Float!
-  lng: Float!
+  lat: Int!
+  lng: Int!
   phoneNumber: String!
   picture: String!
   regularHoliday: String!
   spaName: String!
+}
+
+type Amenity {
+  hasCreditCard: Boolean!
+  hasFreeHairdryer: Boolean!
+  hasFreeShampoo: Boolean!
+  hasPaidHairdryer: Boolean!
+  hasPaidShampoo: Boolean!
+  hasTowel: Boolean!
+}
+
+type AnotherFacility {
+  customFacilities: String
+  hasBreakPlace: Boolean!
+  hasMassageMachine: Boolean!
+  hasRestaurant: Boolean!
+  hasStore: Boolean!
+  hasVendingMachine: Boolean!
+}
+
+type Basic {
+  address: String!
+  businessHours: String!
+  phoneNumber: String!
+  regularHoliday: String!
+  spaName: String!
+}
+
+type Mutation {
+  createSpa(input: AddSpaInput!): Spa!
+}
+
+type Price {
+  adultPrice: Int!
+  adultWeekendPrice: Int!
+  childPrice: Int!
+  childWeekendPrice: Int!
+}
+
+type Query {
+  spa: [Spa!]!
+}
+
+type Spa {
+  amenity: Amenity!
+  anothreFacility: AnotherFacility!
+  basic: Basic!
+  goodCount: Int!
+  id: ID!
+  lat: Int!
+  lng: Int!
+  picture: String!
+  price: Price!
+  spaFacility: SpaFacility!
+}
+
+type SpaFacility {
+  customSpa: String
+  hasBedrockBath: Boolean!
+  hasBubbleBath: Boolean!
+  hasCypressBath: Boolean!
+  hasElectricBath: Boolean!
+  hasFamilyBath: Boolean!
+  hasJetBathSpa: Boolean!
+  hasOpenAirBath: Boolean!
+  hasSauna: Boolean!
+  hasShoulderHittingShower: Boolean!
+  hasSleepingBath: Boolean!
+  hasWaterBath: Boolean!
 }
