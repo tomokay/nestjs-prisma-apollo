@@ -13,7 +13,7 @@ datasource db {
 model Spa {
 	id               Int     @default(autoincrement()) @id
 	spaName          String
-	address           String
+	address          String
 	phoneNumber      String
 	businessHours    String
 	regularHoliday   String
@@ -44,9 +44,8 @@ model Spa {
 	hasMassageMachine Boolean
 	hasVendingMachine Boolean
 	hasStore          Boolean
-	customFacilities String?
+	customFacility   String?
 	picture          String
-	goodCount        Int
-  lat　            Float
-  lng　            Float
+  lat　            String
+  lng　            String
 }
