@@ -3,44 +3,15 @@
 # ------------------------------------------------------
 
 input AddSpaInput {
-  address: String!
-  adultPrice: Int!
-  adultWeekendPrice: Int!
-  businessHours: String!
-  childPrice: Int!
-  childWeekendPrice: Int!
-  customFacilities: String
-  customSpa: String
-  goodCount: Int!
-  hasBedrockBath: Boolean!
-  hasBreakPlace: Boolean!
-  hasBubbleBath: Boolean!
-  hasCreditCard: Boolean!
-  hasCypressBath: Boolean!
-  hasElectricBath: Boolean!
-  hasFamilyBath: Boolean!
-  hasFreeHairdryer: Boolean!
-  hasFreeShampoo: Boolean!
-  hasJetBathSpa: Boolean!
-  hasMassageMachine: Boolean!
-  hasOpenAirBath: Boolean!
-  hasPaidHairdryer: Boolean!
-  hasPaidShampoo: Boolean!
-  hasRestaurant: Boolean!
-  hasSauna: Boolean!
-  hasShoulderHittingShower: Boolean!
-  hasSleepingBath: Boolean!
-  hasStore: Boolean!
-  hasTowel: Boolean!
-  hasVendingMachine: Boolean!
-  hasWaterBath: Boolean!
-  id: ID!
-  lat: Int!
-  lng: Int!
-  phoneNumber: String!
+  amenity: InputAmenity!
+  anotherFacility: InputAnotherFacility!
+  basic: InputBasic!
+  id: ID
+  lat: String!
+  lng: String!
   picture: String!
-  regularHoliday: String!
-  spaName: String!
+  price: InputPrice!
+  spaFacility: InputSpaFacility!
 }
 
 type Amenity {
@@ -53,7 +24,7 @@ type Amenity {
 }
 
 type AnotherFacility {
-  customFacilities: String
+  customFacility: String
   hasBreakPlace: Boolean!
   hasMassageMachine: Boolean!
   hasRestaurant: Boolean!
@@ -67,6 +38,54 @@ type Basic {
   phoneNumber: String!
   regularHoliday: String!
   spaName: String!
+}
+
+input InputAmenity {
+  hasCreditCard: Boolean!
+  hasFreeHairdryer: Boolean!
+  hasFreeShampoo: Boolean!
+  hasPaidHairdryer: Boolean!
+  hasPaidShampoo: Boolean!
+  hasTowel: Boolean!
+}
+
+input InputAnotherFacility {
+  customFacility: String
+  hasBreakPlace: Boolean!
+  hasMassageMachine: Boolean!
+  hasRestaurant: Boolean!
+  hasStore: Boolean!
+  hasVendingMachine: Boolean!
+}
+
+input InputBasic {
+  address: String!
+  businessHours: String!
+  phoneNumber: String!
+  regularHoliday: String!
+  spaName: String!
+}
+
+input InputPrice {
+  adultPrice: Int!
+  adultWeekendPrice: Int!
+  childPrice: Int!
+  childWeekendPrice: Int!
+}
+
+input InputSpaFacility {
+  customSpa: String
+  hasBedrockBath: Boolean!
+  hasBubbleBath: Boolean!
+  hasCypressBath: Boolean!
+  hasElectricBath: Boolean!
+  hasFamilyBath: Boolean!
+  hasJetBathSpa: Boolean!
+  hasOpenAirBath: Boolean!
+  hasSauna: Boolean!
+  hasShoulderHittingShower: Boolean!
+  hasSleepingBath: Boolean!
+  hasWaterBath: Boolean!
 }
 
 type Mutation {
@@ -86,12 +105,11 @@ type Query {
 
 type Spa {
   amenity: Amenity!
-  anothreFacility: AnotherFacility!
+  anotherFacility: AnotherFacility!
   basic: Basic!
-  goodCount: Int!
   id: ID!
-  lat: Int!
-  lng: Int!
+  lat: String!
+  lng: String!
   picture: String!
   price: Price!
   spaFacility: SpaFacility!
