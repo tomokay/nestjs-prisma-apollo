@@ -1,5 +1,5 @@
-const MAX_SPABASIC_LENGTH = 50;
-const MAX_PHONENUMBER_LENGTH = 30;
+const MAX_SPA_BASIC_LENGTH = 50;
+const MAX_SPA_PHONE_NUMBER_LENGTH = 30;
 const MAX_PRICE = 9999999;
 const MAX_OPTIONAL_LENGTH = 50;
 
@@ -100,18 +100,18 @@ const validateSpaName = (
       input: string;
     }
   | undefined => {
-  const isNullSpaName = checkSpaNameIsNotNull(spaName);
+  const isNullSpaName = checkBasicIsNotNull(spaName);
   if (isNullSpaName) {
     return {
-      errorCode: 'SpaName is Required',
+      errorCode: 'SPA_NAME_NULL_ERROR',
       input: spaName,
     };
   }
 
-  const isOverLengthSpaName = checkSpaNameLength(spaName);
+  const isOverLengthSpaName = checkOverLength(spaName, MAX_SPA_BASIC_LENGTH);
   if (isOverLengthSpaName) {
     return {
-      errorCode: 'SpaName is OverLength50',
+      errorCode: 'SPA_NAME_OVER_LENGTH_50_ERROR',
       input: spaName,
     };
   }
@@ -133,19 +133,22 @@ const validateAddress = (
       input: string;
     }
   | undefined => {
-  const isNullSpaAddress = checkAddressIsNotNull(address);
+  const isNullSpaAddress = checkBasicIsNotNull(address);
 
-  if (isNullSpaAddress)
+  if (isNullSpaAddress) {
     return {
-      errorCode: 'SpaAddress id Required',
+      errorCode: 'SPA_ADDRESS_NULL_ERROR',
       input: address,
     };
-  const isOverLengthAddress = checkAddressLength(address);
-  if (isOverLengthAddress)
+  }
+  const isOverLengthAddress = checkOverLength(address, MAX_SPA_BASIC_LENGTH);
+  if (isOverLengthAddress) {
     return {
-      errorCode: 'SpaAddress is OverLength50',
+      errorCode: 'SPA_ADDRESS_OVER_LENGTH_50_ERROR',
       input: address,
     };
+  }
+
   return undefined;
 };
 
@@ -163,19 +166,25 @@ const validatePhoneNumber = (
       input: string;
     }
   | undefined => {
-  const isNullPhoneNumber = checkPhoneNumberIsNotNull(phoneNumber);
-  if (isNullPhoneNumber)
+  const isNullPhoneNumber = checkBasicIsNotNull(phoneNumber);
+  if (isNullPhoneNumber) {
     return {
-      errorCode: 'SpaPhoneNumber is Required',
+      errorCode: 'SPA_PHONE_NUMBER_NULL_ERROR',
       input: phoneNumber,
     };
+  }
 
-  const isOverLengthPhoneNumber = checkPhoneNumberLength(phoneNumber);
-  if (isOverLengthPhoneNumber)
+  const isOverLengthPhoneNumber = checkOverLength(
+    phoneNumber,
+    MAX_SPA_PHONE_NUMBER_LENGTH,
+  );
+  if (isOverLengthPhoneNumber) {
     return {
-      errorCode: 'SpaNumber is OverLength30',
+      errorCode: 'SPA_PHONE_NUMBER_OVER_LENGTH_30_ERROR',
       input: phoneNumber,
     };
+  }
+
   return undefined;
 };
 
@@ -193,19 +202,24 @@ const validateBusinessHours = (
       input: string;
     }
   | undefined => {
-  const isNullBusinessHours = checkBusinessHoursIsNotNull(businessHours);
-  if (isNullBusinessHours)
+  const isNullBusinessHours = checkBasicIsNotNull(businessHours);
+  if (isNullBusinessHours) {
     return {
-      errorCode: 'SpabusinessHours is Required',
+      errorCode: 'SPA_BUSINESS_HOURS_NULL_ERROR',
       input: businessHours,
     };
+  }
 
-  const isOverLengthBusinessHours = checkBusinessHoursLength(businessHours);
-  if (isOverLengthBusinessHours)
+  const isOverLengthBusinessHours = checkOverLength(
+    businessHours,
+    MAX_SPA_BASIC_LENGTH,
+  );
+  if (isOverLengthBusinessHours) {
     return {
-      errorCode: 'SpabBusinessHours is OverLength50',
+      errorCode: 'SPA_BUSINESS_HOURS_OVER_LENGTH_50_ERROR',
       input: businessHours,
     };
+  }
 
   return undefined;
 };
@@ -224,18 +238,25 @@ const validateRegularHoliday = (
       input: string;
     }
   | undefined => {
-  const isNullrRgularHoliday = checkRegularHolidayIsNotNull(regularHoliday);
-  if (isNullrRgularHoliday)
+  const isNullrRgularHoliday = checkBasicIsNotNull(regularHoliday);
+  if (isNullrRgularHoliday) {
     return {
-      errorCode: 'SpaRegularHoliday is Required',
+      errorCode: 'SPA_REGULAR_HOLIDAY_NULL_ERROR',
       input: regularHoliday,
     };
-  const isOverLengthRegularHoliday = checkRegularHolidayLength(regularHoliday);
-  if (isOverLengthRegularHoliday)
+  }
+
+  const isOverLengthRegularHoliday = checkOverLength(
+    regularHoliday,
+    MAX_SPA_BASIC_LENGTH,
+  );
+  if (isOverLengthRegularHoliday) {
     return {
-      errorCode: 'SpaRegularHoliday is OverLength50',
+      errorCode: 'SPA_REGULAR_HOLIDAY_OVER_LENGTH_50_ERROR',
       input: regularHoliday,
     };
+  }
+
   return undefined;
 };
 
@@ -251,19 +272,21 @@ const validateAdultPrice = (
   errorCode: string;
   input: number;
 } => {
-  const isNullAdultPrice = checkAdultPriceIsNotNull(adultPrice);
-  if (isNullAdultPrice)
+  const isNullAdultPrice = checkPriceIsNotNull(adultPrice);
+  if (isNullAdultPrice) {
     return {
-      errorCode: 'AdultPrice is Required',
+      errorCode: 'ADULT_PRICE_NULL_ERROR',
       input: adultPrice,
     };
+  }
 
-  const isOverLengthAdultPrice = checkAdultPriceLength(adultPrice);
-  if (isOverLengthAdultPrice)
+  const isOverLengthAdultPrice = checkPriceLength(adultPrice);
+  if (isOverLengthAdultPrice) {
     return {
-      errorCode: 'AdultPrice is OverLength9999999',
+      errorCode: 'ADULT_PRICE_OVER_9999999_ERROR',
       input: adultPrice,
     };
+  }
 };
 
 /**
@@ -280,19 +303,22 @@ const validateChildPrice = (
       input: number;
     }
   | undefined => {
-  const isNullChildPrice = checkChildPriceIsNotNull(childPrice);
+  const isNullChildPrice = checkPriceIsNotNull(childPrice);
 
-  if (isNullChildPrice)
+  if (isNullChildPrice) {
     return {
-      errorCode: 'ChildPrice is Required',
+      errorCode: 'CHILD_PRICE_NULL_ERROR',
       input: childPrice,
     };
-  const isOverLengthChildPrice = checkChildPriceLength(childPrice);
-  if (isOverLengthChildPrice)
+  }
+
+  const isOverLengthChildPrice = checkPriceLength(childPrice);
+  if (isOverLengthChildPrice) {
     return {
-      errorCode: 'ChildPrice is OverLength9999999',
+      errorCode: 'CHILD_PRICE_OVER_9999999_ERROR',
       input: childPrice,
     };
+  }
 };
 
 /**
@@ -308,21 +334,21 @@ const validateAdultWeekendPrice = (
       input: number;
     }
   | undefined => {
-  const isNullAdultWeekendPrice =
-    checkAdultWeekendPriceIsNotNull(adultWeekendPrice);
-  if (isNullAdultWeekendPrice)
+  const isNullAdultWeekendPrice = checkPriceIsNotNull(adultWeekendPrice);
+  if (isNullAdultWeekendPrice) {
     return {
-      errorCode: 'AdultWeekendPrice is Required',
+      errorCode: 'ADULT_WEEKEND_PRICE_NULL_ERROR',
       input: adultWeekendPrice,
     };
+  }
 
-  const isOverLengthAdultWeekendPrice =
-    checkAdultWeekendPriceLength(adultWeekendPrice);
-  if (isOverLengthAdultWeekendPrice)
+  const isOverLengthAdultWeekendPrice = checkPriceLength(adultWeekendPrice);
+  if (isOverLengthAdultWeekendPrice) {
     return {
-      errorCode: 'AdultWeekendPrice is OverLength9999999',
+      errorCode: 'ADULT_WEEKEND_PRICE_OVER_9999999_ERROR',
       input: adultWeekendPrice,
     };
+  }
 };
 
 /**
@@ -339,21 +365,21 @@ const validateChildWeekendPrice = (
       input: number;
     }
   | undefined => {
-  const isNotNullChildWeekendPrice =
-    checkCildWeekendPriceIsNotNull(childWeekendPrice);
+  const isNotNullChildWeekendPrice = checkPriceIsNotNull(childWeekendPrice);
 
-  if (isNotNullChildWeekendPrice)
+  if (isNotNullChildWeekendPrice) {
     return {
-      errorCode: 'ChildWeekendPrice is Required',
+      errorCode: 'CHILD_WEEKEND_PRICE_NULL_ERROR',
       input: childWeekendPrice,
     };
-  const isOverLengthChildWeekendPrice =
-    checkChildWeekendPriceLength(childWeekendPrice);
-  if (isOverLengthChildWeekendPrice)
+  }
+  const isOverLengthChildWeekendPrice = checkPriceLength(childWeekendPrice);
+  if (isOverLengthChildWeekendPrice) {
     return {
-      errorCode: 'ChildWeekendPrice is OverLength9999999',
+      errorCode: 'CHILD_WEEKEND_PRICE_OVER_9999999_ERROR',
       input: childWeekendPrice,
     };
+  }
 };
 
 /**
@@ -370,13 +396,14 @@ const validateCustomSpa = (
       input: string;
     }
   | undefined => {
-  const isOverLengthCustomSpa = checkCustomSpaLength(customSpa);
+  const isOverLengthCustomSpa = checkOverLength(customSpa, MAX_OPTIONAL_LENGTH);
 
-  if (isOverLengthCustomSpa)
+  if (isOverLengthCustomSpa) {
     return {
-      errorCode: 'CustomSpa　is OverLength50',
+      errorCode: 'SPA_CUSTOM_OVER_LENGTH_50_ERROR',
       input: customSpa,
     };
+  }
 };
 
 /**
@@ -393,208 +420,55 @@ const validateCustomFacility = (
       input: string;
     }
   | undefined => {
-  const isOverLengthCustomFacility = checkCustomFacilityLength(customFacility);
-  if (isOverLengthCustomFacility)
+  const isOverLengthCustomFacility = checkOverLength(
+    customFacility,
+    MAX_OPTIONAL_LENGTH,
+  );
+  if (isOverLengthCustomFacility) {
     return {
-      errorCode: 'CustomFacility is OverLength50',
+      errorCode: 'CUSTOM_FACILITY_OVER_LENGTH_50_ERROR',
       input: customFacility,
     };
+  }
 };
 
 /**
- * spaName(必須項目)があるかチェックする関数
- * @param spaName
- * @returns trueー空文字　false-正常値
+ * 基本情報（必須項目）があるかチェックする関数
+ * @param basic
+ * @return　trueー空文字　false-正常値
  */
 
-const checkSpaNameIsNotNull = (spaName: string) => {
-  return !Boolean(spaName);
+const checkBasicIsNotNull = (basic: string) => {
+  return !Boolean(basic);
 };
 
 /**
- * spaNameの最大文字数10文字にする関数
- * @param spaName(string)
+ * 最大文字数を超えてないかチェックする関数
+ * @param basic
  * @returns true-文字数オーバー　false-正常値
  */
 
-const checkSpaNameLength = (spaName: string) => {
-  return spaName.length > MAX_SPABASIC_LENGTH;
+const checkOverLength = (category: string, maxLength: number) => {
+  return category.length > maxLength;
 };
 
 /**
- * address(必須項目)があるかチェック
- * @param adress
+ * 料金（必須項目）があるかチェックする関数
+ * @param price
  * @returns trueー空文字　false-正常値
  */
 
-const checkAddressIsNotNull = (address: string) => {
-  return !Boolean(address);
+const checkPriceIsNotNull = (price: number) => {
+  return price !== 0 && !Boolean(price);
 };
-
 /**
- * addressの最大文字数10文字
- * @param address
+ * 料金入力値が最大入力値を超えていないかチェックする関数
+ * @param  price
  * @returns true-文字数オーバー　false-正常値
  */
 
-const checkAddressLength = (adress: string) => {
-  return adress.length > MAX_SPABASIC_LENGTH;
-};
-
-/**
- * phoneNumber(必須項目)があるかチェック
- * @param phoneNumber
- * @returns trueー空文字　false-正常値
- */
-
-const checkPhoneNumberIsNotNull = (phoneNumber: string) => {
-  return !Boolean(phoneNumber);
-};
-
-/**
- * phoneNumberの最大文字数
- * @param phoneNumber
- * @returns true-文字数オーバー　false-正常値
- */
-
-const checkPhoneNumberLength = (phoneNumber: string) => {
-  return phoneNumber.length > MAX_PHONENUMBER_LENGTH;
-};
-
-/**
- * businessHours(必須項目)があるかチェック
- * @param businessHours
- * @returns trueー空文字　false-正常値
- */
-
-const checkBusinessHoursIsNotNull = (businessHours: string) => {
-  return !Boolean(businessHours);
-};
-
-/**
- * businessHoursの最大文字数
- * @param businessHours
- * @returns true-文字数オーバー　false-正常値
- */
-
-const checkBusinessHoursLength = (businessHours: string) => {
-  return businessHours.length > MAX_SPABASIC_LENGTH;
-};
-
-/**
- * regularHoliday(必須項目)があるかチェック
- * @param regularHoliday
- * @returns trueー空文字　false-正常値
- */
-const checkRegularHolidayIsNotNull = (regularHoliday: string) => {
-  return !Boolean(regularHoliday);
-};
-
-/**
- * regularHolidayの最大文字数
- * @param regularHoliday
- * @returns true-文字数オーバー　false-正常値
- */
-
-const checkRegularHolidayLength = (regularHoliday: string) => {
-  return regularHoliday.length > MAX_SPABASIC_LENGTH;
-};
-
-/**
- * adultPrice(必須項目)があるかチェック
- * @param  adultPrice
- * @returns trueー空文字　false-正常値
- */
-
-const checkAdultPriceIsNotNull = (adultPrice: number) => {
-  return adultPrice !== 0 && !Boolean(adultPrice);
-};
-
-/**
- * adultPriceの最大文字数
- * @param  adultPrice
- * @returns true-文字数オーバー　false-正常値
- */
-
-const checkAdultPriceLength = (adultPrice: number) => {
-  return adultPrice > MAX_PRICE;
-};
-
-/**
- * 必須項目(childPrice)があるかチェック
- * @param childPrice
- * @returns　trueー空文字　false-正常値
- */
-
-const checkChildPriceIsNotNull = (childPrice: number) => {
-  return childPrice !== 0 && !Boolean(childPrice);
-};
-/**
- * childPriceの最大文字数
- * @param childPrice
- * @returns　true-文字数オーバー　false-正常値
- */
-
-const checkChildPriceLength = (childPrice: number) => {
-  return childPrice > MAX_PRICE;
-};
-
-/**
- * 必須項目(adultWeekendPrice)があるかチェックする関数
- * @param  adultWeekendPrice
- * @returns　trueー空文字　false-正常値
- */ const checkAdultWeekendPriceIsNotNull = (adultWeekendPrice: number) => {
-  return adultWeekendPrice !== 0 && !Boolean(adultWeekendPrice);
-};
-
-/**
- *adultWeekendPriceの最大文字数をチェックする関数
- * @param adultWeekendPrice
- * @returns　true-文字数オーバー　false-正常値
- */
-
-const checkAdultWeekendPriceLength = (adultWeekendPrice: number) => {
-  return adultWeekendPrice > MAX_PRICE;
-};
-
-/**
- *必須項目(childWeekendPrice)があるかチェックする関数
- * @param childWeekendPrice
- * @returns　trueー空文字　false-正常値
- */
-
-const checkCildWeekendPriceIsNotNull = (childWeekendPrice: number) => {
-  return childWeekendPrice !== 0 && !Boolean(childWeekendPrice);
-};
-
-/**
- *childWeekendPriceの最大文字数をチェックする関数
- * @param childWeekendPrice
- * @returns　true-文字数オーバー　false-正常値
- */
-
-const checkChildWeekendPriceLength = (childWeekendPrice: number) => {
-  return childWeekendPrice > MAX_PRICE;
-};
-
-/**
- *
- * @param  customSpa
- * @returns
- */
-
-const checkCustomSpaLength = (customSpa: string) => {
-  return customSpa.length > MAX_OPTIONAL_LENGTH;
-};
-
-/**
- *
- * @param customFacility
- * @returns
- */
-
-const checkCustomFacilityLength = (customFacility: string) => {
-  return customFacility.length > MAX_OPTIONAL_LENGTH;
+const checkPriceLength = (price: number) => {
+  return price > MAX_PRICE;
 };
 
 //エラーコード作成関数
