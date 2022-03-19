@@ -1,0 +1,131 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input AddSpaInput {
+  amenity: InputAmenity!
+  anotherFacility: InputAnotherFacility!
+  basic: InputBasic!
+  id: ID
+  lat: String!
+  lng: String!
+  picture: String!
+  price: InputPrice!
+  spaFacility: InputSpaFacility!
+}
+
+type Amenity {
+  hasCreditCard: Boolean!
+  hasFreeHairdryer: Boolean!
+  hasFreeShampoo: Boolean!
+  hasPaidHairdryer: Boolean!
+  hasPaidShampoo: Boolean!
+  hasTowel: Boolean!
+}
+
+type AnotherFacility {
+  customFacility: String
+  hasBreakPlace: Boolean!
+  hasMassageMachine: Boolean!
+  hasRestaurant: Boolean!
+  hasStore: Boolean!
+  hasVendingMachine: Boolean!
+}
+
+type Basic {
+  address: String!
+  businessHours: String!
+  phoneNumber: String!
+  regularHoliday: String!
+  spaName: String!
+}
+
+input InputAmenity {
+  hasCreditCard: Boolean!
+  hasFreeHairdryer: Boolean!
+  hasFreeShampoo: Boolean!
+  hasPaidHairdryer: Boolean!
+  hasPaidShampoo: Boolean!
+  hasTowel: Boolean!
+}
+
+input InputAnotherFacility {
+  customFacility: String
+  hasBreakPlace: Boolean!
+  hasMassageMachine: Boolean!
+  hasRestaurant: Boolean!
+  hasStore: Boolean!
+  hasVendingMachine: Boolean!
+}
+
+input InputBasic {
+  address: String!
+  businessHours: String!
+  phoneNumber: String!
+  regularHoliday: String!
+  spaName: String!
+}
+
+input InputPrice {
+  adultPrice: Int!
+  adultWeekendPrice: Int!
+  childPrice: Int!
+  childWeekendPrice: Int!
+}
+
+input InputSpaFacility {
+  customSpa: String
+  hasBedrockBath: Boolean!
+  hasBubbleBath: Boolean!
+  hasCypressBath: Boolean!
+  hasElectricBath: Boolean!
+  hasFamilyBath: Boolean!
+  hasJetBathSpa: Boolean!
+  hasOpenAirBath: Boolean!
+  hasSauna: Boolean!
+  hasShoulderHittingShower: Boolean!
+  hasSleepingBath: Boolean!
+  hasWaterBath: Boolean!
+}
+
+type Mutation {
+  createSpa(input: AddSpaInput!): Spa!
+}
+
+type Price {
+  adultPrice: Int!
+  adultWeekendPrice: Int!
+  childPrice: Int!
+  childWeekendPrice: Int!
+}
+
+type Query {
+  spa: [Spa!]!
+}
+
+type Spa {
+  amenity: Amenity!
+  anotherFacility: AnotherFacility!
+  basic: Basic!
+  id: ID!
+  lat: String!
+  lng: String!
+  picture: String!
+  price: Price!
+  spaFacility: SpaFacility!
+}
+
+type SpaFacility {
+  customSpa: String
+  hasBedrockBath: Boolean!
+  hasBubbleBath: Boolean!
+  hasCypressBath: Boolean!
+  hasElectricBath: Boolean!
+  hasFamilyBath: Boolean!
+  hasJetBathSpa: Boolean!
+  hasOpenAirBath: Boolean!
+  hasSauna: Boolean!
+  hasShoulderHittingShower: Boolean!
+  hasSleepingBath: Boolean!
+  hasWaterBath: Boolean!
+}
