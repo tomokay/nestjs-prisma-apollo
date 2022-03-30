@@ -450,28 +450,4 @@ export class UpdateSpaInput {
 export class DeleteSpaInput {
   @Field(() => ID)
   id?: number;
-
-  @Field((type) => InputBasic)
-  basic: InputBasic;
-
-  @Field((type) => InputPrice)
-  price: InputPrice;
-
-  @Field((type) => InputAmenity)
-  amenity: InputAmenity;
-
-  @Field((type) => InputSpaFacility)
-  spaFacility: InputSpaFacility;
-
-  @Field((type) => InputAnotherFacility)
-  anotherFacility: InputAnotherFacility;
-
-  @Field((type) => String)
-  picture: string;
-
-  @Field((type) => String)
-  lat: string;
-
-  @Field((type) => String)
-  lng: string;
 }
