@@ -2,6 +2,7 @@ import { PrismaService } from '../prisma.service';
 import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
 import {
   AddSpaInput,
+  DeleteSpaInput,
   Spa,
   SpaList,
   SpaModel,
@@ -11,6 +12,7 @@ import { ParseIntPipe } from '@nestjs/common';
 import { validateQuerySpa } from 'src/lib/queryValidation';
 import { createSpaInput } from 'src/lib/prisma/createSpaInput';
 import { updateSpaInput } from 'src/lib/prisma/updateSpaInput';
+import { deleteSpaInput } from 'src/lib/prisma/deleteSpaInput';
 
 @Resolver(() => Spa)
 export class SpaResolver {
@@ -37,7 +39,7 @@ export class SpaResolver {
     @Args({ name: 'input', type: () => AddSpaInput })
     input: AddSpaInput,
   ) {
-    return createSpaInput(input);
+    return await createSpaInput(input);
   }
 
   @Mutation((returns) => Spa)
@@ -45,6 +47,14 @@ export class SpaResolver {
     @Args({ name: 'update', type: () => UpdateSpaInput })
     update: UpdateSpaInput,
   ) {
-    return updateSpaInput(update);
+    return await updateSpaInput(update);
+  }
+
+  @Mutation((returns) => Spa)
+  async deleteSpa(
+    @Args({ name: 'deleteSpaId', type: () => ID })
+    deleteSpaId: DeleteSpaInput,
+  ) {
+    return await deleteSpaInput(deleteSpaId);
   }
 }
