@@ -4,7 +4,7 @@ import { UpdateSpaInput } from 'src/spa/spa.model';
 
 const prisma = new PrismaClient();
 
-export const updateSpaInput = (update: UpdateSpaInput) => {
+export const updateSpaData = (update: UpdateSpaInput) => {
   validateUpdateSpaInput(
     update.id,
     update.basic,
