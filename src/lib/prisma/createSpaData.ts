@@ -1,10 +1,10 @@
 import { validateCreateSpaInput } from 'src/lib/createValidation';
-import { Spa, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { AddSpaInput } from 'src/spa/spa.model';
 
 const prisma = new PrismaClient();
 
-export const createSpaInput = async (input: AddSpaInput): Promise<Spa> => {
+export const createSpaData = (input: AddSpaInput) => {
   validateCreateSpaInput(
     input.basic,
     input.price,

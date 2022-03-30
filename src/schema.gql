@@ -90,6 +90,7 @@ input InputSpaFacility {
 
 type Mutation {
   createSpa(input: AddSpaInput!): Spa!
+  deleteSpa(deleteSpaId: ID!): Spa!
   updateSpa(update: UpdateSpaInput!): Spa!
 }
 

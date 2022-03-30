@@ -445,3 +445,9 @@ export class UpdateSpaInput {
   @Field((type) => String)
   lng: string;
 }
+
+@InputType()
+export class DeleteSpaInput {
+  @Field(() => ID)
+  id?: number;
+}
