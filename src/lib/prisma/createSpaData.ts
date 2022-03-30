@@ -4,7 +4,7 @@ import { AddSpaInput } from 'src/spa/spa.model';
 
 const prisma = new PrismaClient();
 
-export const createSpaInput = (input: AddSpaInput) => {
+export const createSpaData = (input: AddSpaInput) => {
   validateCreateSpaInput(
     input.basic,
     input.price,

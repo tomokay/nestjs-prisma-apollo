@@ -10,8 +10,8 @@ import {
 } from 'src/spa/spa.model';
 import { ParseIntPipe } from '@nestjs/common';
 import { validateQuerySpa } from 'src/lib/queryValidation';
-import { createSpaInput } from 'src/lib/prisma/createSpaInput';
-import { updateSpaInput } from 'src/lib/prisma/updateSpaInput';
+import { createSpaData } from 'src/lib/prisma/createSpaData';
+import { updateSpaData } from 'src/lib/prisma/updateSpaData';
 import { deleteSpaData } from 'src/lib/prisma/deleteSpaData';
 
 @Resolver(() => Spa)
@@ -39,7 +39,7 @@ export class SpaResolver {
     @Args({ name: 'input', type: () => AddSpaInput })
     input: AddSpaInput,
   ) {
-    return await createSpaInput(input);
+    return await createSpaData(input);
   }
 
   @Mutation((returns) => Spa)
@@ -47,7 +47,7 @@ export class SpaResolver {
     @Args({ name: 'update', type: () => UpdateSpaInput })
     update: UpdateSpaInput,
   ) {
-    return await updateSpaInput(update);
+    return await updateSpaData(update);
   }
 
   @Mutation((returns) => Spa)
