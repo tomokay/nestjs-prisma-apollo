@@ -1,17 +1,10 @@
-import { validateCreateSpaInput } from 'src/lib/createValidation';
 import { PrismaClient } from '@prisma/client';
 import { AddSpaInput } from 'src/spa/spa.model';
 
 const prisma = new PrismaClient();
 
 export const createSpaData = (input: AddSpaInput) => {
-  validateCreateSpaInput(
-    input.basic,
-    input.price,
-    input.spaFacility.customSpa,
-    input.anotherFacility.customFacility,
-  );
-  const createSpaInputResult = prisma.spa.create({
+  return prisma.spa.create({
     data: {
       spaName: input.basic.spaName,
       address: input.basic.address,
@@ -51,5 +44,4 @@ export const createSpaData = (input: AddSpaInput) => {
       lng: input.lng,
     },
   });
-  return createSpaInputResult;
 };

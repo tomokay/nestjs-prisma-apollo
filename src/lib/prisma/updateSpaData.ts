@@ -1,19 +1,10 @@
 import { PrismaClient } from '@prisma/client';
-import { validateUpdateSpaInput } from 'src/lib/createValidation';
 import { UpdateSpaInput } from 'src/spa/spa.model';
 
 const prisma = new PrismaClient();
 
 export const updateSpaData = (update: UpdateSpaInput) => {
-  validateUpdateSpaInput(
-    update.id,
-    update.basic,
-    update.price,
-    update.spaFacility.customSpa,
-    update.anotherFacility.customFacility,
-  );
-
-  const updateSpaInputResult = prisma.spa.update({
+  return prisma.spa.update({
     where: { id: Number(update.id) },
     data: {
       spaName: update.basic.spaName,
@@ -54,5 +45,4 @@ export const updateSpaData = (update: UpdateSpaInput) => {
       lng: update.lng,
     },
   });
-  return updateSpaInputResult;
 };

@@ -13,6 +13,10 @@ import { validateQuerySpa } from 'src/lib/queryValidation';
 import { createSpaData } from 'src/lib/prisma/createSpaData';
 import { updateSpaData } from 'src/lib/prisma/updateSpaData';
 import { deleteSpaData } from 'src/lib/prisma/deleteSpaData';
+import {
+  validateCreateSpaInput,
+  validateUpdateSpaInput,
+} from 'src/lib/createValidation';
 
 @Resolver(() => Spa)
 export class SpaResolver {
@@ -39,6 +43,12 @@ export class SpaResolver {
     @Args({ name: 'input', type: () => AddSpaInput })
     input: AddSpaInput,
   ) {
+    validateCreateSpaInput(
+      input.basic,
+      input.price,
+      input.spaFacility.customSpa,
+      input.anotherFacility.customFacility,
+    );
     return await createSpaData(input);
   }
 
@@ -47,6 +57,13 @@ export class SpaResolver {
     @Args({ name: 'update', type: () => UpdateSpaInput })
     update: UpdateSpaInput,
   ) {
+    validateUpdateSpaInput(
+      update.id,
+      update.basic,
+      update.price,
+      update.spaFacility.customSpa,
+      update.anotherFacility.customFacility,
+    );
     return await updateSpaData(update);
   }
 

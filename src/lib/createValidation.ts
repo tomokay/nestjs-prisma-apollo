@@ -3,35 +3,32 @@ const MAX_SPA_PHONE_NUMBER_LENGTH = 30;
 const MAX_PRICE = 9999999;
 const MAX_OPTIONAL_LENGTH = 50;
 
+type basicInput = {
+  spaName: string;
+  address: string;
+  phoneNumber: string;
+  businessHours: string;
+  regularHoliday: string;
+};
+
+type priceInput = {
+  adultPrice: number;
+  childPrice: number;
+  adultWeekendPrice: number;
+  childWeekendPrice: number;
+};
+
 /**
  * 新規登録のバリデーション関数
- * @param spaName
- * @param address
- * @param phoneNumber
- * @param businessHours
- * @param regularHoliday
- * @param adultPrice
- * @param childPrice
- * @param adultWeekendPrice
- * @param childWeekendPrice
+ * @param basicInput
+ * @param priceInput
  * @param customSpa
  * @param customFacility
  */
 
 export const validateCreateSpaInput = (
-  basicInput: {
-    spaName: string;
-    address: string;
-    phoneNumber: string;
-    businessHours: string;
-    regularHoliday: string;
-  },
-  priceInput: {
-    adultPrice: number;
-    childPrice: number;
-    adultWeekendPrice: number;
-    childWeekendPrice: number;
-  },
+  basicInput: basicInput,
+  priceInput: priceInput,
   customSpa: string,
   customFacility: string,
 ) => {
@@ -43,34 +40,16 @@ export const validateCreateSpaInput = (
 /**
  * 登録情報を編集するときのバリデーション関数
  * @param id
- * @param spaName
- * @param address
- * @param phoneNumber
- * @param businessHours
- * @param regularHoliday
- * @param adultPrice
- * @param childPrice
- * @param adultWeekendPrice
- * @param childWeekendPrice
+ * @param basicInput
+ * @param priceInput
  * @param customSpa
  * @param customFacility
  */
 
 export const validateUpdateSpaInput = (
   id: number,
-  basicInput: {
-    spaName: string;
-    address: string;
-    phoneNumber: string;
-    businessHours: string;
-    regularHoliday: string;
-  },
-  priceInput: {
-    adultPrice: number;
-    childPrice: number;
-    adultWeekendPrice: number;
-    childWeekendPrice: number;
-  },
+  basicInput: basicInput,
+  priceInput: priceInput,
   customSpa: string,
   customFacility: string,
 ) => {
@@ -93,13 +72,7 @@ export const invaildSpaId = (id: number) => {
  * 基本情報のバリデーションのエラー情報を返す
  */
 
-export const validateBasic = (basicInput: {
-  spaName: string;
-  address: string;
-  phoneNumber: string;
-  businessHours: string;
-  regularHoliday: string;
-}) => {
+export const validateBasic = (basicInput: basicInput) => {
   const invaildSpaName = validateSpaName(basicInput.spaName);
   const invaildAdress = validateAddress(basicInput.address);
   const invaildPhoneNumber = validatePhoneNumber(basicInput.phoneNumber);
@@ -129,12 +102,7 @@ export const validateBasic = (basicInput: {
  * 料金情報のバリデーションのエラーを返す関数
  */
 
-export const validatePrice = (priceInput: {
-  adultPrice: number;
-  childPrice: number;
-  adultWeekendPrice: number;
-  childWeekendPrice: number;
-}) => {
+export const validatePrice = (priceInput: priceInput) => {
   const invaildAdultPrice = validateAdultPrice(priceInput.adultPrice);
   const invaildChildPrice = validateChildPrice(priceInput.childPrice);
   const invaildAdultWeekendPrice = validateAdultWeekendPrice(
