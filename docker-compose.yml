@@ -3,10 +3,10 @@ services:
   postgres:
     image: postgres:11
     environment:
-      - POSTGRES_USER=postgresql
-      - POSTGRES_PASSWORD=password
-      - PGPASSWORD=password
-      - POSTGRES_DB=spadbtable
+      - POSTGRES_USER=${USERNAME}
+      - POSTGRES_PASSWORD=${USERPASS}
+      - PGPASSWORD=ROOTPASS
+      - POSTGRES_DB=${DATABASE}
       - TZ="Asia/Tokyo"
     ports:
       - 54322:5432
