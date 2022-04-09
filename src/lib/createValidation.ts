@@ -65,7 +65,9 @@ export const validateUpdateSpaInput = (
  */
 
 export const invaildSpaId = (id: number) => {
-  if (id === undefined && 0) throw new Error(`Can't find Spa ID`);
+  if (!id) {
+    throw new Error(`Can't find Spa ID`);
+  }
 };
 
 /**
