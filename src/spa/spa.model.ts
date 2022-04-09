@@ -388,9 +388,6 @@ export class InputAnotherFacility {
 
 @InputType()
 export class AddSpaInput {
-  @Field(() => ID)
-  id?: number;
-
   @Field((type) => InputBasic)
   basic: InputBasic;
 
@@ -419,7 +416,7 @@ export class AddSpaInput {
 @InputType()
 export class UpdateSpaInput {
   @Field(() => ID)
-  id?: number;
+  id: number;
 
   @Field((type) => InputBasic)
   basic: InputBasic;
