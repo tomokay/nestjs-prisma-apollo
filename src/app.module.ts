@@ -6,7 +6,6 @@ import { ApolloDriver } from '@nestjs/apollo';
 import { join } from 'path';
 import { PrismaService } from 'src/prisma.service';
 import { SpaResolver } from 'src/spa/spa.resolver';
-import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 
 @Module({
   imports: [
@@ -14,8 +13,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
-      playground: false,
-      plugins: [ApolloServerPluginLandingPageLocalDefault()],
+      playground: true,
     }),
   ],
   controllers: [AppController],
