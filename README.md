@@ -11,7 +11,7 @@ typescript: "^4.3.5"
 
 ## ER 図
 
-![ER図](./spaER.drawio)
+![ER図](./spaER.drawio.png)
 
 ## インフラアーキテクチャ 図
 
